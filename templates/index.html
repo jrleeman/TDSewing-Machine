@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block bodytag %}
+<body>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>TDS Configuration</h1>
+        <p>Configure all the things.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Simple</h2>
+          <p>No more writing XML and pqacts by hand! Just select what datasets
+             you want on your server and we do the rest.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Discoverable</h2>
+          <p>You may discover data you did not know was even available!</p>
+       </div>
+       <div class="col-md-4">
+         <h2>Community Driven</h2>
+         <p>Need more data? Just ask!</p>
+      </div>
+      </div>
+    </div>
+{% endblock %}

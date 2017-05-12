@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block metarefresh %}
+<meta http-equiv="refresh" content="10">
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Datasets</h1>
+      <p>View and manage datasets</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Datasets</h2>
+        {% if datasets %}
+        <table class="table table-striped">
+          <tr>
+            <th>Dataset</th>
+            <th>Path</th>
+            <th>Delete</th>
+          </tr>
+
+          {% for dataset in datasets %}
+          <tr>
+            <form class="form-inline" action="/dataset/deletedataset">
+              <td>{{dataset.name}}</td>
+              <td>{{dataset.path}}</td>
+              <input type="text" name="dataset_id" value="{{dataset._id}}" hidden>
+              <td><input type="submit" value="Delete" class="btn btn-primary"></td>
+            </form>
+          </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        <p>There are no datasets in the database.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}

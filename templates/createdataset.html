@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Add Dataset</h1>
+      <p>Add a dataset</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Add a dataset</h2>
+        <form class="form-inline" action="/datasets/createdataset">
+          <div class="form-group">
+            {{createdatasetform.csrf_token}}
+            {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}
+            {{createdatasetform.path(class="form-control", placeholder="Dataset path")}}
+            {{createdatasetform.metadata(class="form-control", placeholder="Metadata XML")}}
+            {{createdatasetform.submit(value="Create", class="btn btn-primary")}}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
