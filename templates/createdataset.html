@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Add a dataset</h2>
-        <form class="form-inline" action="/datasets/createdataset">
+        <form class="form-inline" action="/datasets/createdataset", method="POST">
           <div class="form-group">
             {{createdatasetform.csrf_token}}
             {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}

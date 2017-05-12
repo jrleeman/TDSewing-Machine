@@ -1,5 +1,5 @@
-from flask_wtf import Form
-from wtforms import SubmitField, TextField, TextAreaField, validators
+#from flask_wtf import Form
+from wtforms import SubmitField, TextField, TextAreaField, validators, Form
 
 class CreateDatasetForm(Form):
     name = TextField('name', validators=[validators.DataRequired()])
