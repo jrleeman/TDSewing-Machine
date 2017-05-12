@@ -13,6 +13,15 @@
       <div class="col-md-12">
         <h2>Add a dataset</h2>
         <form class="form-inline" action="/datasets/createdataset", method="POST">
+          {% if createdatasetform.errors %}
+            <ul class="errors">
+              {% for field_name, field_errors in createdatasetform.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                  <li>{{field_name}} - {{error}}</li>
+                {% endfor %}
+              {% endfor %}
+            </lu>
+            {% endif %}
           <div class="form-group">
             {{createdatasetform.csrf_token}}
             {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}

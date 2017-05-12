@@ -14,8 +14,7 @@ def home():
 @app.route('/datasets/createdataset', methods=['GET','POST'])
 def dataset_createdataset():
     form = CreateDatasetForm(request.form)
-
-    if form.validate():
+    if request.method=='POST' and form.validate():
         name = form.name.data
         path = form.path.data
         metadata = form.metadata.data
@@ -25,7 +24,7 @@ def dataset_createdataset():
         with open('datasets.json', 'w') as outfile:
             json.dump(datasets, outfile)
         return redirect(url_for('dataset_view'))
-    return render_template('createdataset.html', createdatasetform = form)
+    return render_template('createdataset.html', createdatasetform=form)
 
 
 @app.route('/datasets')
