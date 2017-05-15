@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Datasets</h2>
-        <a href="/datasets/createdataset" class="btn btn-info" role="button">Create New Dataset</a>
+        <a href="/datasets/createdataset" class="btn btn-default" role="button">Create New Dataset</a>
         {% if datasets %}
         <table class="table table-striped">
           <tr>
@@ -31,7 +31,7 @@
               <td>{{dataset.name}}</td>
               <td>{{dataset.path}}</td>
               <input type="text" name="dataset_name" value="{{dataset.name}}" hidden>
-              <td><input type="submit" value="Delete" class="btn btn-primary"></td>
+              <td><input type="submit" value="Delete" class="btn btn-danger"></td>
             </form>
           </tr>
         {% endfor %}
