@@ -16,7 +16,27 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Feature Collections</h2>
-        <p>Magic will happen here</p>
+        <a href="/featurecollections/createfeaturecollection" class="btn btn-info" role="button">Create New Feature Collection</a>
+        {% if featurecollections %}
+        <table class="table table-striped">
+          <tr>
+            <th>Feature Collection</th>
+            <th>Delete</th>
+          </tr>
+
+          {% for featurecollection in featurecollections %}
+          <tr>
+            <form class="form-inline" action="/featurecollections/deletefeaturecollection">
+              <td>{{featurecollection.name}}</td>
+              <input type="text" name="featurecollection_name" value="{{featurecollection.name}}" hidden>
+              <td><input type="submit" value="Delete" class="btn btn-primary"></td>
+            </form>
+          </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        <p>There are no feature collections in the database.</p>
+        {% endif %}
       </div>
     </div>
   </div>

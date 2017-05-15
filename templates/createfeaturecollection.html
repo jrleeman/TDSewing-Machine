@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Add Feature Collection</h1>
+      <p>Add a feature collection</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Add a dataset</h2>
+        <form class="form-inline" action="/featurecollections/createfeaturecollection", method="POST">
+          {% if createfeaturecollectionform.errors %}
+            <ul class="errors">
+              {% for field_name, field_errors in createfeaturecollectionform.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                  <li>{{field_name}} - {{error}}</li>
+                {% endfor %}
+              {% endfor %}
+            </lu>
+            {% endif %}
+          <div class="form-group">
+            {{createfeaturecollectionform.csrf_token}}
+            <div class="row">
+            {{createfeaturecollectionform.name(class="form-control", placeholder="Dataset name")}}
+            </div>
+            <div class="row">
+            {{createfeaturecollectionform.path(class="form-control", placeholder="Dataset Path")}}
+            </div>
+            <div class="row">
+            {{createfeaturecollectionform.xml(class="form-control", placeholder="XML")}}
+            </div>
+            <div class="row">
+            {{createfeaturecollectionform.pqact(class="form-control", placeholder="pqact")}}
+            </div>
+            <div class="row">
+            {{createfeaturecollectionform.submit(value="Create", class="btn btn-primary")}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

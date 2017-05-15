@@ -24,10 +24,18 @@
             {% endif %}
           <div class="form-group">
             {{createdatasetform.csrf_token}}
+            <div class="row">
             {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}
+            </div>
+            <div class="row">
             {{createdatasetform.path(class="form-control", placeholder="Dataset path")}}
+            </div>
+            <div class="row">
             {{createdatasetform.metadata(class="form-control", placeholder="Metadata XML")}}
+            </div>
+            <div class="row">
             {{createdatasetform.submit(value="Create", class="btn btn-primary")}}
+            </div>
           </div>
         </form>
       </div>
