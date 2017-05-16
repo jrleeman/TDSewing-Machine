@@ -3,8 +3,8 @@ from wtforms import SubmitField, TextField, TextAreaField, validators, Form, Hid
 
 class CreateDatasetForm(Form):
     name = TextField('name', validators=[validators.DataRequired()])
-    path = SelectField('path', choices=[('t1', 'Test 1'), ('t2', 'Test 2')], validators=[validators.DataRequired()])
-    xml = TextAreaField('xml', validators=[validators.DataRequired()])
+    path = SelectField('path')
+    xml = TextAreaField('xml')
     metadata = TextAreaField('metadata', validators=[validators.DataRequired()])
     submit = SubmitField('submit')
 

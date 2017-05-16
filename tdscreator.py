@@ -14,13 +14,37 @@ def home():
 @app.route('/datasets/createdataset', methods=['GET','POST'])
 def dataset_createdataset():
     form = CreateDatasetForm(request.form)
-    if request.method=='POST' and form.validate():
+    jsondata = open('datasets.json', 'r').read()
+    datasets = json.loads(jsondata)
+    form.path.choices = populate_choices(datasets)
+    if request.method=='POST':# and form.validate():
         name = form.name.data
         path = form.path.data
         metadata = form.metadata.data
         jsondata = open('datasets.json', 'r').read()
         datasets = json.loads(jsondata)
-        datasets.append({"name":name, "path":name, "metadata":name})
+        id = datasets[-1]['_id'] + 1
+        datasets.append({"_id":id, "name":name, "parent_dataset":int(path), "metadata":metadata, "feature_collections":[]})
+        with open('datasets.json', 'w') as outfile:
+            json.dump(datasets, outfile)
+        return redirect(url_for('dataset_view'))
+    return render_template('createdataset.html', createdatasetform=form)
+
+
+@app.route('/datasets/editdataset', methods=['GET','POST'])
+def dataset_editdataset():
+    form = CreateDatasetForm(request.form)
+    jsondata = open('datasets.json', 'r').read()
+    datasets = json.loads(jsondata)
+    form.path.choices = populate_choices(datasets)
+    if request.method=='POST':# and form.validate():
+        name = form.name.data
+        path = form.path.data
+        metadata = form.metadata.data
+        jsondata = open('datasets.json', 'r').read()
+        datasets = json.loads(jsondata)
+        id = datasets[-1]['_id'] + 1
+        datasets.append({"_id":id, "name":name, "parent_dataset":int(path), "metadata":metadata, "feature_collections":[]})
         with open('datasets.json', 'w') as outfile:
             json.dump(datasets, outfile)
         return redirect(url_for('dataset_view'))
@@ -86,6 +110,35 @@ def featurecollections_deletefeaturecollection():
     with open('featurecollections.json', 'w') as outfile:
         json.dump(featurecollections, outfile)
     return redirect(url_for('featurecollections_view'))
+
+
+def get_dataset_byid(datasets, id):
+    for dataset in datasets:
+        if dataset['_id'] == id:
+            return dataset
+
+
+def get_path(datasets, dataset):
+    path = []
+    ds = dataset
+    while ds['parent_dataset'] != "None":
+        path.append(ds['name'])
+        ds = get_dataset_byid(datasets, ds['parent_dataset'])
+    path_str = ""
+    for item in path[::-1]:
+        path_str += "/" + item
+    return path_str
+
+def populate_choices(datasets):
+    choices = []
+    paths = []
+    for ds in datasets:
+        paths.append(get_path(datasets, ds))
+        name = paths[-1]
+        if name == "":
+            name = "/"
+        choices.append((ds['_id'], name))
+    return choices
 
 
 if __name__ == "__main__":

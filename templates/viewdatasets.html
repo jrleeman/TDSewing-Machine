@@ -21,17 +21,15 @@
         <table class="table table-striped">
           <tr>
             <th>Dataset</th>
-            <th>Path</th>
-            <th>Delete</th>
+            <th></th>
           </tr>
 
           {% for dataset in datasets %}
           <tr>
             <form class="form-inline" action="/datasets/deletedataset">
               <td>{{dataset.name}}</td>
-              <td>{{dataset.path}}</td>
+              <td><input type="submit" value="Edit" class="btn btn-warning"</td>
               <input type="text" name="dataset_name" value="{{dataset.name}}" hidden>
-              <td><input type="submit" value="Delete" class="btn btn-danger"></td>
             </form>
           </tr>
         {% endfor %}
