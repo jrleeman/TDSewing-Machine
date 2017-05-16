@@ -3,8 +3,8 @@
 {% block content %}
   <div class="jumbotron">
     <div class="container">
-      <h1>Add Dataset</h1>
-      <p>Add a dataset</p>
+      <h1>Datasets</h1>
+      <p>Manage Feature Collection Containers</p>
     </div>
   </div>
 
@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Add a dataset</h2>
-        <form class="form-inline" action="/datasets/createdataset", method="POST">
+        <form class="form-horizontal" action="/datasets/createdataset", method="POST">
           {% if createdatasetform.errors %}
             <ul class="errors">
               {% for field_name, field_errors in createdatasetform.errors|dictsort if field_errors %}
@@ -22,21 +22,35 @@
               {% endfor %}
             </lu>
             {% endif %}
-          <div class="form-group">
-            {{createdatasetform.csrf_token}}
-            <div class="row">
-            {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}
+          {{createdatasetform.csrf_token}}
+
+            <div class="form-group">
+              <label for="{{createdatasetform.name.id}}" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-6">
+                {{createdatasetform.name(class="form-control", placeholder="Dataset name")}}
+              </div>
             </div>
-            <div class="row">
-            {{createdatasetform.path(class="form-control", placeholder="Dataset path")}}
+
+            <div class="form-group">
+              <label for="{{createdatasetform.path.id}}" class="col-sm-2 control-label">Path</label>
+              <div class="col-sm-6">
+                {{createdatasetform.path(class="form-control", placeholder="Dataset path")}}
+              </div>
             </div>
-            <div class="row">
-            {{createdatasetform.metadata(class="form-control", placeholder="Metadata XML")}}
+
+            <div class="form-group">
+              <label for="{{createdatasetform.metadata.id}}" class="col-sm-2 control-label">Metadata</label>
+              <div class="col-sm-10">
+                {{createdatasetform.metadata(class="form-control", placeholder="Metadata XML", rows="15")}}
+              </div>
             </div>
-            <div class="row">
-            {{createdatasetform.submit(value="Create", class="btn btn-primary")}}
+
+            <div class="form-group">
+              <div class="col-sm-offset-11 col-sm-1">
+                {{createdatasetform.submit(value="Create", class="btn btn-primary")}}
+              </div>
             </div>
-          </div>
+
         </form>
       </div>
     </div>
