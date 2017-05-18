@@ -119,6 +119,7 @@ def dataset_deletedataset():
 
 @app.route('/featurecollections')
 def featurecollections_view():
+    return render_template('notready.html')
     jsondata = open('featurecollections.json', 'r').read()
     featurecollections = json.loads(jsondata)
     return render_template('viewfeaturecollections.html', featurecollections=featurecollections)
@@ -152,6 +153,15 @@ def featurecollections_deletefeaturecollection():
     with open('featurecollections.json', 'w') as outfile:
         json.dump(featurecollections, outfile)
     return redirect(url_for('featurecollections_view'))
+
+
+#
+# My Servers
+#
+
+@app.route('/servers')
+def servers():
+    return render_template('notready.html')
 
 #
 # Helpers
