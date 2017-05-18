@@ -102,3 +102,15 @@ def get_dataset_by_id(id):
     for dataset in datasets:
         if dataset['_id'] == id:
             return dataset
+
+
+def get_dataset_by_name(name):
+    """Returns dataset(s) with the given name"""
+    datasets = read_datasets()
+    matching_datasets=[]
+    for dataset in datasets:
+        if dataset['name'] == name:
+            matching_datasets.append(dataset)
+    if len(matching_datasets) == 1:
+        return datasets[0]
+    return matching_datasets
