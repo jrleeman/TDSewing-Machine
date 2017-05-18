@@ -36,19 +36,15 @@ def dataset_view():
         maxdepth = max(depths)
     else:
         maxdepth=0
-    print("RENDERING N DATASETS: ", len(datasets))
-    print("I HAVE N DEPTHS: ", len(depths))
     return render_template('viewdatasets.html', datasets=datasets, maxdepth=maxdepth)
 
 def get_ordered(dataset_id, ordered, fname='datasets.json'):
     """Get children of the given dataset"""
     datasets = ds.read_datasets()
     dataset = ds.get_dataset_by_id(dataset_id)
-    print (dataset['name'])
     ordered.append(dataset)
     for child in ds.get_children(dataset_id):
         get_ordered(child['_id'], ordered)
-    print("ORDERED RETURN HAS N ELEMENTS: ", len(ordered))
     return ordered
 
 @app.route('/datasets/createdataset', methods=['GET','POST'])
@@ -114,7 +110,6 @@ def dataset_editdataset():
         form.path.choices = choices
 
         # Get the dataset and pre-populate the form
-        print("Getting dataset id: ", dataset_id)
         dataset = ds.get_dataset_by_id(dataset_id)
 
         form.name.data = dataset['name']
