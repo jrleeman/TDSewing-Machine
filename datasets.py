@@ -2,6 +2,16 @@ import hashlib
 import json
 
 
+def get_ordered(dataset_id, ordered, fname='datasets.json'):
+    """Get children of the given dataset"""
+    datasets = read_datasets()
+    dataset = get_dataset_by_id(dataset_id)
+    ordered.append(dataset)
+    for child in get_children(dataset_id):
+        get_ordered(child['_id'], ordered)
+    return ordered
+
+
 def get_depth(dataset_id, fname='datasets.json'):
     """Get depth of any dataset, with 0 being the root"""
     datasets = read_datasets()
