@@ -58,15 +58,18 @@ def dataset_editdataset():
 
     # If a valid form is submitted, create the dataset and add it
     if request.method=='POST':# and form.validate():
-        # Grab info from the form
-        name = form.name.data
-        path = form.path.data
-        metadata = form.metadata.data
-        old_dataset_id = form.id.data
+        if request.form['submit'] == 'Save':
+            # Grab info from the form
+            name = form.name.data
+            path = form.path.data
+            metadata = form.metadata.data
+            old_dataset_id = form.id.data
 
-        # Create new dataset dictionary and add it to the json file
-        new_dataset = {"name":name, "parent_dataset":path, "metadata":metadata, "feature_collections":[]}
-        ds.edit_dataset(old_dataset_id, new_dataset)
+            # Create new dataset dictionary and add it to the json file
+            new_dataset = {"name":name, "parent_dataset":path, "metadata":metadata, "feature_collections":[]}
+            ds.edit_dataset(old_dataset_id, new_dataset)
+        if request.form['submit'] == 'Delete':
+            ds.delete_dataset(form.id.data)
 
         # After sucessful dataset creation, redirect to the dataset view page
         return redirect(url_for('dataset_view'))
