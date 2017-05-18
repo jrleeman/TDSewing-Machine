@@ -22,7 +22,15 @@ def home():
 @app.route('/datasets')
 def dataset_view():
     datasets = ds.read_datasets()
-    return render_template('viewdatasets.html', datasets=datasets)
+
+    # Get the depth or level of all datasets
+    depths = []
+    for dataset in datasets:
+        depth = ds.get_depth(dataset['_id'])
+        dataset['depth'] = depth
+        depths.append(depth)
+    print("maxdepth: ", max(depths))
+    return render_template('viewdatasets.html', datasets=datasets, maxdepth=max(depths))
 
 
 @app.route('/datasets/createdataset', methods=['GET','POST'])

@@ -2,6 +2,27 @@ import hashlib
 import json
 
 
+def get_depth(dataset_id, fname='datasets.json'):
+    """Get depth of any dataset, with 0 being the root"""
+    datasets = read_datasets()
+    dataset = get_dataset_by_id(dataset_id)
+
+    level =0
+    while dataset['parent_dataset'] != 'None':
+        dataset = get_dataset_by_id(dataset['parent_dataset'])
+        level += 1
+    return level
+
+
+def get_children(dataset_id, fname='datasets.json'):
+    """Get any immediate children of the given dataset"""
+    datasets = read_datasets()
+    children = []
+    for ds in datasets:
+        if ds['parent_dataset'] == dataset_id:
+            children.append(ds)
+    return children
+
 def read_datasets(fname='datasets.json'):
     """Read the datasets json file and return a list of dictionaries."""
     jsondata = open(fname, 'r').read()
