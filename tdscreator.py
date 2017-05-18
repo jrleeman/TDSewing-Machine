@@ -23,15 +23,32 @@ def home():
 def dataset_view():
     datasets = ds.read_datasets()
 
+    datasets = get_ordered(datasets[0]['_id'])
+
     # Get the depth or level of all datasets
     depths = []
     for dataset in datasets:
         depth = ds.get_depth(dataset['_id'])
         dataset['depth'] = depth
         depths.append(depth)
-    print("maxdepth: ", max(depths))
-    return render_template('viewdatasets.html', datasets=datasets, maxdepth=max(depths))
 
+    if len(datasets) >0:
+        maxdepth = max(depths)
+    else:
+        maxdepth=0
+    print("RENDERING N DATASETS: ", len(datasets))
+    print("I HAVE N DEPTHS: ", len(depths))
+    return render_template('viewdatasets.html', datasets=datasets, maxdepth=maxdepth)
+
+def get_ordered(dataset_id, fname='datasets.json', ordered=[]):
+    """Get children of the given dataset"""
+    datasets = ds.read_datasets()
+    dataset = ds.get_dataset_by_id(dataset_id)
+    print (dataset['name'])
+    ordered.append(dataset)
+    for child in ds.get_children(dataset_id):
+        get_ordered(child['_id'])
+    return ordered
 
 @app.route('/datasets/createdataset', methods=['GET','POST'])
 def dataset_createdataset():
