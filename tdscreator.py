@@ -22,8 +22,8 @@ def home():
 @app.route('/datasets')
 def dataset_view():
     datasets = ds.read_datasets()
-
-    datasets = ds.get_ordered(datasets[0]['_id'], ordered=[])
+    root = ds.get_dataset_by_name('root')
+    datasets = ds.get_ordered(root['_id'], ordered=[])
 
     # Get the depth or level of all datasets
     depths = []
