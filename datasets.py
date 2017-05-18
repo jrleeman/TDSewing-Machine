@@ -3,7 +3,7 @@ import json
 
 
 def get_ordered(dataset_id, ordered, fname='datasets.json'):
-    """Get children of the given dataset"""
+    """Return an ordered list of datasets"""
     datasets = read_datasets()
     dataset = get_dataset_by_id(dataset_id)
     ordered.append(dataset)
@@ -32,6 +32,7 @@ def get_children(dataset_id, fname='datasets.json'):
         if ds['parent_dataset'] == dataset_id:
             children.append(ds)
     return children
+
 
 def read_datasets(fname='datasets.json'):
     """Read the datasets json file and return a list of dictionaries."""
@@ -86,12 +87,12 @@ def delete_dataset(dataset_id, delete_below=True):
 
     _write_datasets(datasets)
 
+
 def edit_dataset(dataset_id, dataset):
     """Given the old dataset id and new data, update the record and children"""
     old_dataset_id = dataset_id
     delete_dataset(dataset_id)
     new_dataset_id = add_dataset(dataset)
-    print("EDITING : ", old_dataset_id, new_dataset_id)
     _rebuild_children_parent_id(old_dataset_id, new_dataset_id)
 
 
