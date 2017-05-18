@@ -16,7 +16,6 @@
     <div class="row">
       <div class="col-md-12">
         <h2>Datasets</h2>
-
         {% if datasets %}
         <table class="table table-striped">
           <tr>
@@ -27,8 +26,8 @@
           {% for dataset in datasets %}
           <tr>
             <form class="form-inline" action="/datasets/editdataset">
-              <td>{{dataset.name}}</td>
-              <td><input type="submit" value="Edit" class="btn btn-warning"</td>
+              <td class="col-md-11">{{dataset.name}}</td>
+              <td class="col-md-1"><input type="submit" value="Edit" class="btn btn-warning"</td>
               <input type="text" name="_id" value="{{dataset._id}}" hidden>
             </form>
           </tr>
