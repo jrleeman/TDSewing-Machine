@@ -6,6 +6,7 @@ class CreateDatasetForm(Form):
     path = SelectField('path')
     xml = TextAreaField('xml')
     metadata = TextAreaField('metadata', validators=[validators.DataRequired()])
+    id = HiddenField('_id')
     submit = SubmitField('submit')
 
 class CreateFeatureCollectionForm(Form):
