@@ -112,7 +112,7 @@ def dataset_editdataset():
 
         # Populate the possible routes for the datasets
         datasets = ds.read_datasets()
-        choices = populate_choices(datasets)
+        choices = populate_choices(datasets, exclude=[dataset_id])
         form.path.choices = choices
 
         # Get the dataset and pre-populate the form
@@ -211,16 +211,17 @@ def get_path(datasets, dataset):
     return path_str
 
 
-def populate_choices(datasets):
+def populate_choices(datasets, exclude=[]):
     """Popuate a dropdown with choices."""
     choices = []
     paths = []
     for dst in datasets:
-        paths.append(get_path(datasets, dst))
-        name = paths[-1]
-        if name == '':
-            name = '/'
-        choices.append((dst['_id'], name))
+        if dst['_id'] not in exclude:
+            paths.append(get_path(datasets, dst))
+            name = paths[-1]
+            if name == '':
+                name = '/'
+            choices.append((dst['_id'], name))
     return choices
 
 
