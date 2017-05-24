@@ -18,19 +18,19 @@
       <div class="col-md-6">
         <h2>Available</h2>
 
-
+        {% for datasetname, dataset in datasets.items() %}
         <div class="panel-group">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse1">Forecast Products and Analysis</a>
+                        <a data-toggle="collapse" href="#collapse{{ loop.index }}">{{ datasetname }}</a>
                     </h4>
                 </div>
 
-                <div id="collapse1" class="panel-collapse collapse">
+                <div id="collapse{{ loop.index }}" class="panel-collapse collapse">
                     <ul class="list-group" style="list-style-type:none">
 
-                {%- for key, value in datasets.items() recursive %}
+                {%- for key, value in dataset.items() recursive %}
                   <li><span class="glyphicon glyphicon-th"></span> {{ key }}
                   {%- if value %}
                     <ul style="list-style-type:none">{{ loop(value.items())}}</ul>
@@ -42,8 +42,9 @@
                 </div>
             </div>
         </div>
-      </div>
 
+      {% endfor %}
+      </div>
       <div class="col-md-6">
         <h2>Server</h2>
 

@@ -60,13 +60,25 @@ def dataset_view():
     import xml.etree.ElementTree as ET
 
     # Read the tree and send to template as a dict of dicts
-    tree = ET.parse('forecastProdsAndAna.xml')
-    root = tree.getroot()
-    #datasets = make_dictionary_tree(root)
-    #datasets = {'a': {'b': {'c': {}}}}
-    #datasets = {'1': {'1.1': {'1.1.1':{}}}, '2':{}})
-    datasets = make_tree(root, {})
 
+    xml_files = {'Forecast Model Data': 'forecastModels.xml',
+                 'Forecast Products and Analyses': 'forecastProdsAndAna.xml',
+                 'Observation Data': 'obsData.xml',
+                 'Radar Data': 'radars.xml',
+                 'Satellite Data': 'satellite.xml'}
+
+    datasets = {}
+
+    for key in xml_files:
+        name = key
+        file = xml_files[key]
+        tree = ET.parse(file)
+        root = tree.getroot()
+        datasets[name] = make_tree(root, {})
+
+
+    print(datasets.keys())
+    #print(datasets)
     return render_template('viewdatasets.html', datasets=datasets)
 
 
