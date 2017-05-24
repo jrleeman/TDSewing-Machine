@@ -75,5 +75,16 @@ def dataset_view():
     return render_template('viewdatasets.html', datasets=datasets)
 
 
+#
+# My Servers
+#
+
+
+@app.route('/servers')
+def servers():
+    """View servers in user's account."""
+    return render_template('notready.html')
+
+
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
