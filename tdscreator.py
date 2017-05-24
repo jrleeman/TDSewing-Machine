@@ -1,12 +1,7 @@
 """Main TDSewing Machine App."""
 
-import json
-
-import datasets as ds
-
 from flask import Flask, redirect, render_template, request, url_for
 
-from forms import CreateDatasetForm, CreateFeatureCollectionForm
 
 app = Flask(__name__)
 app.secret_key = 'NTOBiFxcjaehKa9nvgTmv5dslPUay7l4QDauEGIV3pSwpZKhpFGqJzestVy\
