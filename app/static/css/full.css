@@ -1,3 +1,7 @@
+.top-buffer {
+  padding-top: 20px;
+}
+
 .simple-center-text {
   padding: 3rem 1.5rem;
   text-align: center;
