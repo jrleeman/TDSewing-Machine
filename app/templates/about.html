@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}About TSM - Powered by Unidata{% endblock %}
+
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>About TSM</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-7">
+                    <p>The THREDDS sewing machine (TSM) is a project to make the configuration of <a href="https://www.unidata.ucar.edu/software/thredds/current/tds/">THREDDS
+                    data servers</a> easier with a web based interface that lets you select data from Unidata's
+                    Internet Data Distribution (IDD) feeds. The tool emails users a zip file containing the
+                    necessary configuration files.</p>
+
+                    <h3>What is THREDDS?</h3>
+                    <p>The goal of Unidata's <a href="https://www.unidata.ucar.edu/software/thredds/current/tds/">Thematic Real-time Environmental
+                    Distributed Data Services (THREDDS)</a> is to provide students,
+                    educators and researchers with coherent access to a large
+                    collection of real-time and archived datasets from a variety
+                    of environmental data sources at a number of distributed
+                    server sites. The <a href="https://www.unidata.ucar.edu/software/thredds/current/tds/">THREDDS Data Server (TDS)</a> is a web server
+                    that provides metadata and data access for scientific
+                    datasets, using a variety of remote data access protocols.</p>
+
+                    <h3>Support</h5>
+                      <p>Having trouble with the TSM or setting up your THREDDS data server? We're here to help!
+                      Issues for the TSM may be filed on its <a href="https://github.com/jrleeman/TSM">GitHub repository</a>. THREDDS questions should be
+                      directed to our support email at <a href="mailto:support-thredds@unidata.ucar.edu">support-thredds@unidata.ucar.edu</a>.</p>
+                </div>
+              <div class="col-md-5">
+                <img src = "../static/img/project_logo.png">
+              </div>
+            </div>
+        </div>
+{% endblock %}

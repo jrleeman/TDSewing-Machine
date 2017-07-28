@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}TSM Server Configuration - Powered by Unidata{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#forecastmoddata" role="tab">Forecast Model Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#forecastprodanalysis" role="tab">Forecast Products and Analyses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#obsdata" role="tab">Observation Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#radardata" role="tab">Radar Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#satdata" role="tab">Satellite Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#casestudies" role="tab">Case Studies</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="forecastmoddata" role="tabpanel">
+        <h3>Forecast Model Data</h3>
+        <!-- Tab Contents -->
+        <table>
+          <tr>
+            <td>|<i class="fa fa-folder-open" aria-hidden="true"></i></td>
+            <td>NCEP Forecast Models</td>
+            <td></td>
+            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button></td>
+          </tr>
+
+          <tr>
+            <td>|----<i class="fa fa-folder-open" aria-hidden="true"></i></td>
+            <td>Global Ensemble Forecasting System (GEFS)</td>
+            <td><a href="#" data-toggle="popover" title="Summary" data-content="NCEP Global Ensemble Forecasting System (GEFS)
+              Global one degree Lat/Lon grid.
+              Model runs are made at 0, 6, 12, 18 ... hours out to 378 hours (16 days).
+              Horizontal = 181 by 360 points, resolution 1 degree, Lat/Lon projection.
+              Vertical = 2000 to 1000 hPa mandatory pressure levels (7 levels); pressure, height above ground,
+              pressure_difference_layers."><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button></td>
+          </tr>
+
+          <tr>
+            <td>|--------<i class="fa fa-file" aria-hidden="true"></i></td>
+            <td>GEFS Members - Analysis</td>
+            <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
+            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button></td>
+          </tr>
+
+          <tr>
+            <td>|--------<i class="fa fa-server" aria-hidden="true"></i></td>
+            <td>GEFS Members - Forecasts</td>
+            <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
+            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="tab-pane fade" id="forecastprodanalysis" role="tabpanel">
+        <h3>Forecast Products and Analyses</h3>
+        <!-- Tab Contents -->
+      </div>
+
+      <div class="tab-pane fade" id="obsdata" role="tabpanel">
+        <h3>Observation Data</h3>
+        <!-- Tab Contents -->
+      </div>
+
+      <div class="tab-pane fade" id="radardata" role="tabpanel">
+        <h3>Radar Data</h3>
+        <!-- Tab Contents -->
+      </div>
+      <div class="tab-pane fade" id="satdata" role="tabpanel">
+        <h3>Satellite Data</h3>
+        <!-- Tab Contents -->
+      </div>
+
+      <div class="tab-pane fade" id="casestudies" role="tabpanel">
+        <h3>Case Studies</h3>
+        <!-- Tab Contents -->
+      </div>
+    </div>
+    </div><!-- /.container -->
+
+{% endblock %}
