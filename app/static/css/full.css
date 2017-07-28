@@ -1,0 +1,33 @@
+.simple-center-text {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.intro-header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/server_background.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+.intro-divider {
+    width: 500px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.opaque-container {
+    background: rgb(0, 0, 0); /* Fallback */
+    background: rgba(0, 0, 0, 0.6);
+    padding-bottom: 1px;
+    border-radius: 25px;
+}
